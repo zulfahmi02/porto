@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Skills\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -13,8 +14,10 @@ class SkillForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('icon_url')
-                    ->url()
+                FileUpload::make('icon_url')
+                    ->image()
+                    ->disk('public')
+                    ->directory('skills')
                     ->required(),
                 TextInput::make('category')
                     ->required()
